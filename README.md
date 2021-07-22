@@ -10,7 +10,7 @@ studies.
 ## Installation
 
 This package is currently only of interest and utility at NZBRI and
-hence won’t be made available via CRAN. Instead, it is hosted in a in a
+hence won’t be made available via CRAN. Instead, it is hosted in a
 repository on Github at <https://github.com/nzbri/msnz>
 
 Therefore, the usual installation route using `install.packages('msnz')`
@@ -32,5 +32,5 @@ version by specifying the name of a particular release to revert to,
 e.g.
 
 ``` r
-remotes::install_github('nzbri/chchpd@v0.1.0')
+remotes::install_github('nzbri/chchpd@v0.2.0')
 ```
