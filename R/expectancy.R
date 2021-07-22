@@ -17,7 +17,7 @@
     dplyr::select(ex)
 
   # as.numeric to avoid returning a tiny dataframe:
-  expected_year_of_death = as.numeric(year_of_birth + ex)
+  expected_year_of_death = as.numeric(year_of_birth + age_at_diagnosis + ex)
 
   return(expected_year_of_death)
 }
