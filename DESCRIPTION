@@ -1,7 +1,7 @@
 Package: msnz
 Type: Package
 Title: Functions to Work with New Zealand Multiple Sclerosis Studies
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(
     person('Michael', 'MacAskill', email = 'michael.macaskill@nzbri.org', 
     role = c('aut', 'cre')))
