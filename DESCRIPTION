@@ -11,8 +11,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
-Imports:
-    lubridate
-    dplyr
+Imports: lubridate,
+  dplyr
 Depends: 
     R (>= 2.10)
