@@ -19,7 +19,8 @@ expected_year_of_death(
 
 \item{age_at_diagnosis}{Age at diagnosis as an integer. We use this so that
 the expected age of death is conditional on having reached the age of
-diagnosis, rather than being calculated from the value at birth.}
+diagnosis, rather than being calculated from the value at birth. If the age
+at diagnosis is \code{NA}, then a median value of 39 is substituted for it.}
 
 \item{percentile}{Specify whether to return the \code{'median'} estimate (the
 default), or \code{'5'} or \code{'95'} for the 5th or 95th percentile. While

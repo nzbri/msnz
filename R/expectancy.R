@@ -1,25 +1,25 @@
-# Check an NHI for being in a correct format.
+# Look up the NZ cohort life tables for an expected year of death.
 #
 # This hidden function checks only one scalar value. See the exported,
-# vector-safe nhi_format() function for documentation.
-#
+# vector-safe expected_year_of_death() function for documentation.
 
 .expected_year_of_death <- function(year_of_birth,
                                    sex,
                                    age_at_diagnosis,
                                    percentile = 'median') {
 
-  ex = nz_life_table %>%
+  # some patients don't have a recorded age at diagnosis. If so, substitute a
+  # median value:
+  if (is.na(age_at_diagnosis)) {age_at_diagnosis = 39}
+
+  expectation = nz_life_table %>%
     dplyr::filter(yearofbirth == year_of_birth,
                   sex == !!sex, # unquote, as argument & column have same name
                   age == age_at_diagnosis,
-                  percentile == !!percentile) %>% # unquote again
-    dplyr::select(ex)
+                  percentile == !!percentile) # unquote again
 
-  # as.numeric to avoid returning a tiny dataframe:
-  expected_year_of_death = as.numeric(year_of_birth + age_at_diagnosis + ex)
-
-  return(expected_year_of_death)
+  # make as.numeric to avoid returning a tiny dataframe:
+  return(as.numeric(year_of_birth + age_at_diagnosis + expectation$ex))
 }
 
 #' Get expected year of death.
@@ -35,7 +35,8 @@
 #'
 #' @param age_at_diagnosis Age at diagnosis as an integer. We use this so that
 #' the expected age of death is conditional on having reached the age of
-#' diagnosis, rather than being calculated from the value at birth.
+#' diagnosis, rather than being calculated from the value at birth. If the age
+#' at diagnosis is \code{NA}, then a median value of 39 is substituted for it.
 #'
 #' @param percentile Specify whether to return the \code{'median'} estimate (the
 #' default), or \code{'5'} or \code{'95'} for the 5th or 95th percentile. While
