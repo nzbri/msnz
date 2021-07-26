@@ -10,7 +10,7 @@ This package bundles together useful functions to work with New
     Zealand Multiple Sclerosis epidemiology data.
 }
 \details{
-Package for analysing data from New Zealand MUltiple Sclerosis
+Package for analysing data from New Zealand Multiple Sclerosis
 epidemiology studies.
 }
 \author{
