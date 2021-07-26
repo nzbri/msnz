@@ -2,4 +2,4 @@
 
 # the census date of the New Zealand MS Prevalence study:
 #' @export
-census_date = lubridate::ymd('2006-07_03')
+census_date = lubridate::ymd('2006-03-07')
