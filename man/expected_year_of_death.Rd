@@ -21,7 +21,7 @@ expected_year_of_death(
 \code{male}.}
 
 \item{conditional_age}{Conditional age as an integer. We use this so that
-the expected age of death is conditional on having reached this age, 
+the expected age of death is conditional on having reached this age,
 rather than being calculated from the value at birth. If the conditional
 age is \code{NA}, then conditional_age_default is substituted for it.}
 
@@ -30,17 +30,17 @@ conditional age is \code{NA}. Defaults to 39.}
 
 \item{method}{Specify whether to give the \code{'median'} life
 expectancy (the default), or \code{'sample'} from the distribution defined
-by the median life expectancy and the variance around this. While the other 
-arguments can be vectors of multiple values, this is a single value that 
+by the median life expectancy and the variance around this. While the other
+arguments can be vectors of multiple values, this is a single value that
 applies to everything.}
 
-\item{percentile}{When returning the median life expectancy, specify whether to 
-return the \code{'median'} estimate of this value (the default), or \code{'5'} 
-or \code{'95'} for the 5th or 95th percentile. While the other arguments can be 
+\item{percentile}{When returning the median life expectancy, specify whether to
+return the \code{'median'} estimate of this value (the default), or \code{'5'}
+or \code{'95'} for the 5th or 95th percentile. While the other arguments can be
 vectors of multiple values, this is a single value that applies to everything.}
 
 \item{n_samples}{When the method is \code{'sample'} set how many samples to
-return for each individual. Defaults to 1. While the other arguments can be 
+return for each individual. Defaults to 1. While the other arguments can be
 vectors of multiple values, this is a single value that applies to everything.}
 }
 \value{
