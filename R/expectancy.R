@@ -1,4 +1,5 @@
-# Look up the NZ cohort life tables for an expected year of death.
+# Look up the NZ cohort life tables for an expected or randomly sampled 
+# year of death.
 #
 # This hidden function checks only one scalar value. See the exported,
 # vector-safe expected_year_of_death() function for documentation.
@@ -8,14 +9,14 @@
                                    conditional_age,
                                    conditional_age_default = 39,
                                    method = 'median',
-                                   percentile = 'median',
-                                   n_samples = 1) {
+                                   percentile = 'median') {
 
   # some patients might not have the conditional age defined. If so, substitute a
   # default value:
   if (is.na(conditional_age)) {conditional_age = conditional_age_default}
   
   if (method == 'median') {
+    
     expectation = nz_life_table %>%
       dplyr::filter(yearofbirth == year_of_birth,
                     sex == !!sex, # unquote, as argument & column have same name
@@ -23,22 +24,26 @@
                     percentile == !!percentile) # unquote again
     
     additional_years_lived = expectation$ex
+    
   }
   else if (method == 'sample') {
     
     additional_years_lived = 0
     alive = 1
     
+    # Get the probabilities for a person of the relevant birth year and sex
+    life_table_subset = nz_life_table %>%
+      dplyr::filter(yearofbirth == year_of_birth,
+                    sex == !!sex, # unquote, as argument & column have same name
+                    percentile == !!percentile) # unquote again
+    
     while (alive) {
       
       # Life tables only go upto 100
-      lifetables_age = min(conditional_age+additional_years_lived,100)
+      lifetables_age = min(conditional_age + additional_years_lived,100)
       
-      expectation = nz_life_table %>%
-        dplyr::filter(yearofbirth == year_of_birth,
-                      sex == !!sex, # unquote, as argument & column have same name
-                      age == lifetables_age,
-                      percentile == !!percentile) # unquote again
+      expectation = life_table_subset %>%
+        dplyr::filter(age == lifetables_age)
       
       # Run simulation to see if they live another year
       # px is the probability that they live another year
@@ -47,7 +52,7 @@
       # Didn't survive year, are now deceased
       } else {
         alive = 0
-        print(paste("Sampled a person living to ",conditional_age+additional_years_lived))
+        print(paste("Sampled a person living to ",conditional_age + additional_years_lived))
       }
       
     }
@@ -114,8 +119,7 @@ expected_year_of_death <- function(year_of_birth,
                                           sex = sex[i],
                                           conditional_age = conditional_age[i],
                                           method = method,
-                                          percentile = percentile,
-                                          n_samples = n_samples)
+                                          percentile = percentile)
     }
   }
 
