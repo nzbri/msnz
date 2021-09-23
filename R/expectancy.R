@@ -57,7 +57,7 @@
     }
 
   } else {
-    stop("In expected_year_of_death(), 'method' must be one of 'median' or 'sample'")
+    stop("The 'method' parameter must be one of 'median' or 'sample'")
   }
 
   # make as.numeric to avoid returning a tiny dataframe:
