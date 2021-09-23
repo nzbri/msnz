@@ -1,12 +1,12 @@
 Package: msnz
 Type: Package
 Title: Functions to Work with New Zealand Multiple Sclerosis Studies
-Version: 0.3.0
+Version: 0.3.1
 Authors@R: c(
     person('Michael', 'MacAskill', email = 'michael.macaskill@nzbri.org', 
-    role = c('aut', 'cre'))),
+    role = c('aut', 'cre')),
     person('Daniel', 'Myall', email = 'daniel.myall@nzbri.org', 
-    role = 'ctb')
+    role = 'ctb'))
 Description: This package bundles together useful functions to work with New
     Zealand Multiple Sclerosis epidemiology data.
 License: MIT + file LICENSE
