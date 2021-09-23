@@ -11,7 +11,8 @@ expected_year_of_death(
   conditional_age_default = 39,
   method = "median",
   percentile = "median",
-  n_samples = 1
+  n_samples = 1,
+  seed = NULL
 )
 }
 \arguments{
@@ -34,14 +35,22 @@ by the median life expectancy and the variance around this. While the other
 arguments can be vectors of multiple values, this is a single value that
 applies to everything.}
 
-\item{percentile}{When returning the median life expectancy, specify whether to
-return the \code{'median'} estimate of this value (the default), or \code{'5'}
-or \code{'95'} for the 5th or 95th percentile. While the other arguments can be
-vectors of multiple values, this is a single value that applies to everything.}
+\item{percentile}{When returning the median life expectancy, specify whether
+to return the \code{'median'} estimate of this value (the default), or
+\code{'5'} or \code{'95'} for the 5th or 95th percentile. While other
+arguments can be vectors of multiple values, this is a single value that
+applies to everything.}
 
-\item{n_samples}{When the method is \code{'sample'} set how many samples to
-return for each individual. Defaults to 1. While the other arguments can be
-vectors of multiple values, this is a single value that applies to everything.}
+\item{n_samples}{When the method is \code{'sample'}, specify how many samples
+to return for each individual. Defaults to 1. While other arguments can
+be vectors of multiple values, this is a single value that applies to
+everything.}
+
+\item{seed}{When the method is \code{'sample'}, for reproducibility, this
+integer parameter allows you to specify a seed to the random number generator
+so that the random sample values generated will be consistent from one run to
+another. Defaults to \code{NULL}, meaning that the sample values returned
+will vary across calls to the function.}
 }
 \value{
 \code{'YYYY.Y'} The expected year of death (numeric).

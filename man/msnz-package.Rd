@@ -16,5 +16,10 @@ epidemiology studies.
 \author{
 \strong{Maintainer}: Michael MacAskill \email{michael.macaskill@nzbri.org}
 
+Other contributors:
+\itemize{
+  \item Daniel Myall \email{daniel.myall@nzbri.org} [contributor]
+}
+
 }
 \keyword{internal}
