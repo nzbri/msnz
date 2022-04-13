@@ -45,9 +45,17 @@ for a prevalence survey in the absence of a disease register or
 population register. *Internal Medicine Journal,* ***42,*** 1207-1212.):
 
 ``` r
-msnz::dob_from_uin()
-msnz::sex_from_uin()
-msnz::initials_from_uin()
+library(msnz)
+
+msnz::dob_from_uin('01011970FAB')
+#> [1] "1970-01-01"
+
+msnz::sex_from_uin('01011970FAB')
+#> [1] Female
+#> Levels: Female Male
+
+msnz::initials_from_uin('01011970FAB')
+#> [1] "AB"
 ```
 
 It also provides two package-wide constants, giving the original census
@@ -55,10 +63,9 @@ date of the New Zealand MS Prevalence study, and the censoring date for
 survival analyses, set to 15 years later:
 
 ``` r
-library(msnz)
-
 msnz::census_date
 #> [1] "2006-03-07"
+
 msnz::censoring_date
 #> [1] "2021-03-07"
 ```
@@ -76,8 +83,6 @@ the life expectancy of a New Zealander, given their year of birth, sex,
 and some conditional age (see below for explanation).
 
 ``` r
-library(msnz)
-
 msnz::expected_year_of_death(year_of_birth = 1970, 
                              sex = 'female', 
                              conditional_age = 50)

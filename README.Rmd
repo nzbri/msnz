@@ -53,10 +53,14 @@ unique identifier (UNI) assigned to each participant (see Richardson _et.al._
 the absence of a disease register or population register. _Internal Medicine 
 Journal,_ ***42,*** 1207-1212.):
 
-```{r uni-functions, eval = FALSE}
-msnz::dob_from_uin()
-msnz::sex_from_uin()
-msnz::initials_from_uin()
+```{r uni-functions, eval = TRUE}
+library(msnz)
+
+msnz::dob_from_uin('01011970FAB')
+
+msnz::sex_from_uin('01011970FAB')
+
+msnz::initials_from_uin('01011970FAB')
 ```
 
 It also provides two package-wide constants, giving the original census date of 
@@ -64,9 +68,8 @@ the New Zealand MS Prevalence study, and the censoring date for survival
 analyses, set to 15 years later:
 
 ```{r date-constants, eval = TRUE}
-library(msnz)
-
 msnz::census_date
+
 msnz::censoring_date
 ```
 
@@ -82,8 +85,6 @@ expectancy of a New Zealander, given their year of birth, sex, and some
 conditional age (see below for explanation).
 
 ```{r example-1, eval = TRUE}
-library(msnz)
-
 msnz::expected_year_of_death(year_of_birth = 1970, 
                              sex = 'female', 
                              conditional_age = 50)
