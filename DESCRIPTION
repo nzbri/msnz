@@ -1,7 +1,7 @@
 Package: msnz
 Type: Package
 Title: Functions to Work with New Zealand Multiple Sclerosis Studies
-Version: 0.3.2
+Version: 0.3.3
 Authors@R: c(
     person('Michael', 'MacAskill', email = 'michael.macaskill@nzbri.org', 
     role = c('aut', 'cre')),
@@ -12,8 +12,9 @@ Description: This package bundles together useful functions to work with New
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Imports: lubridate,
-  dplyr
+  dplyr,
+  magrittr
 Depends: 
     R (>= 2.10)
