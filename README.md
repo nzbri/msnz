@@ -74,7 +74,7 @@ msnz::censoring_date
 
 This function is the only one of use more generally to external
 researchers. The package incorporates the New Zealand Cohort Life Tables
-provided by Statistics New Zealand, and as released in March 2021. (See
+provided by Statistics New Zealand, as released in March 2021. (See
 <https://www.stats.govt.nz/information-releases/new-zealand-cohort-life-tables-march-2022-update>
 for source data).
 
@@ -130,6 +130,6 @@ against a synthetic sample derived from the population. That is, for
 each person in the actual sample, generate a synthetic comparison person
 randomly sampled from the population, conditional on the target person’s
 year of birth, sex, and age at a censoring date. The sampling approach
-gives a much more natural looking comparison sample survival
-distribution, compared to each synthetic person having precisely the
-median survival conditional on those values.
+gives a much more natural looking population comparison  
+survival distribution, compared to each synthetic person having
+precisely the median survival conditional on those values.
