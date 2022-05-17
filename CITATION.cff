@@ -1,0 +1,22 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  msnz: An R package for analysis of MS mortality in
+  New Zealand
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Michael R.
+    family-names: MacAskill
+    email: michael.macaskill@nzbri.org
+    affiliation: New Zealand Brain Research Institute
+    orcid: 'https://orcid.org/0000-0001-9073-0346'
+  - given-names: Daniel J.
+    family-names: Myall
+    email: daniel.myall@nzbri.org
+    affiliation: New Zealand Brain Research Institute
+    orcid: 'https://orcid.org/0000-0002-0032-6567'
