@@ -8,11 +8,23 @@ analysis from the New Zealand Multiple Sclerosis Prevalence and related
 studies, for researchers associated with the New Zealand Brain Research
 Institute (NZBRI).
 
+The package also provides a function to estimate life expectancy from
+the New Zealand cohort life tables, which can be of use more widely.
+These individual esteimates are either:
+
+-   Deterministic - the function simply looks up the expected year of
+    death for an individual of a given sex, year of birth, and
+    conditional age, or
+-   Probabilistic - the function runs an individual-level random
+    simulation for a person of given characteristics. This means that
+    the generated sample will have a realistic level of variability
+    across individuals, rather than people with the same demographics
+    having an identical expected year of death.
+
 ## Installation
 
-This package is primarily of interest and utility at NZBRI and hence
-won’t be made available via CRAN. Instead, it is hosted in a repository
-on Github at <https://github.com/nzbri/msnz>
+This package is not available via CRAN and is hosted in a repository on
+Github at <https://github.com/nzbri/msnz>
 
 Therefore, the usual installation route using `install.packages('msnz')`
 is not possible, and will yield a not-useful error message that the
@@ -39,10 +51,10 @@ remotes::install_github('nzbri/msnz@v0.3.0')
 ## Functions specific to the MS prevalence study
 
 The package provides three convenience functions to extract info from
-the the unique identifier (UNI) assigned to each participant (see
-Richardson *et.al.* (2012) Method for identifying eligible individuals
-for a prevalence survey in the absence of a disease register or
-population register. *Internal Medicine Journal,* ***42,*** 1207-1212.):
+the unique identifier (UIN) assigned to each participant (see Richardson
+*et.al.* (2012) Method for identifying eligible individuals for a
+prevalence survey in the absence of a disease register or population
+register. *Internal Medicine Journal,* ***42,*** 1207-1212):
 
 ``` r
 library(msnz)
@@ -122,14 +134,34 @@ msnz::expected_year_of_death(year_of_birth = 1970, 'female',
 ```
 
 The values returned can either be deterministic (extracted directly from
-the life table) or the result of a random sampling process (to better
-simulate the distribution of values that would be seen in an actual
-population). The sampling approach is particularly useful in a survival
-analysis where one wishes to compare the survival in a given sample
-against a synthetic sample derived from the population. That is, for
-each person in the actual sample, generate a synthetic comparison person
-randomly sampled from the population, conditional on the target person’s
-year of birth, sex, and age at a censoring date. The sampling approach
-gives a much more natural looking population comparison  
-survival distribution, compared to each synthetic person having
-precisely the median survival conditional on those values.
+the life table) or the result of a random simulation process (to better
+approximate the distribution of values that would be seen in an actual
+population). The simulation approach is particularly useful in a
+survival analysis where one wishes to compare the survival in a given
+sample against a synthetic sample derived from the population. That is,
+for each person in the actual sample, we generate a synthetic comparison
+person, randomly simulated from the population, conditional on the
+target person’s year of birth, sex, and age at a censoring date. The
+simulation approach gives a much more natural-looking population
+comparison survival distribution, compared to each synthetic person
+having precisely the median survival conditional on those values.
+
+The simulation process is invoked by specifying the parameter
+`method = 'sample'`, rather than the default value `method = 'median'`,
+which simply returns the tabulated median value from the cohort life
+tables. Using the `'sample'` method runs a simulation for a person of
+the given year of birth, sex, and conditional age (e.g. the age they
+reached at the census date). The simulation proceeds by iterating up
+from that conditional age age, one year at a time. At each year of age,
+a random number is generated (uniformly distributed between 0.0 and
+1.0). If that number is less than the life table probability of such a
+person surviving to the next year, the age is incremented and the
+simulation continues for that individual. If the random number exceeds
+that probability, then the current age is assigned as the synthetic
+person’s age of death.
+
+For fuller details on other function parameters, look up the help via
+`?expected_year_of_death`. These include control over what estimate is
+returned (i.e. the median or the 5th or 95th percentile), the number of
+simulated samples returned per individual, and a seed to allow for
+reproducibility of the randomly simulated values.
