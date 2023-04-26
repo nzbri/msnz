@@ -155,7 +155,7 @@ probability, then the current age is assigned as the synthetic person’s age of
 death.
 
 For fuller details on other function parameters, look up the help via 
-`?expected_year_of_death`. These include control over what estimate is returned. 
+`?expected_year_of_death`. These include control over what estimate is returned  
 (i.e. the median or the 5th or 95th percentile), the number of simulated samples
 returned per individual, and a seed to allow for reproducibility of the randomly
 simulated values.
