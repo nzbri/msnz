@@ -29,13 +29,13 @@ age is \code{NA}, then conditional_age_default is substituted for it.}
 \item{conditional_age_default}{The default conditional age to use when
 conditional age is \code{NA}. Defaults to 39.}
 
-\item{method}{Specify whether to give the \code{'median'} life
+\item{method}{Specify whether to give the \code{'median'} of the mean life
 expectancy (the default), or \code{'sample'} from the distribution defined
 by the median life expectancy and the variance around this. While the other
 arguments can be vectors of multiple values, this is a single value that
 applies to everything.}
 
-\item{percentile}{When returning the median life expectancy, specify whether
+\item{percentile}{When returning the mean life expectancy, specify whether
 to return the \code{'median'} estimate of this value (the default), or
 \code{'5'} or \code{'95'} for the 5th or 95th percentile. While other
 arguments can be vectors of multiple values, this is a single value that

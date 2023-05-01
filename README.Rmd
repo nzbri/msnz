@@ -21,7 +21,7 @@ for researchers associated with the New Zealand Brain Research Institute
 
 The package also provides a function to estimate life expectancy from the New 
 Zealand cohort life tables, which can be of use more widely. These individual 
-esteimates are either: 
+estimates are either: 
 
 - Deterministic - the function simply looks up the expected year of death for
 an individual of a given sex, year of birth, and conditional age, or
@@ -139,14 +139,14 @@ generate a synthetic comparison person, randomly simulated from the population,
 conditional on the target person's year of birth, sex, and age at a censoring 
 date. The simulation approach gives a much more natural-looking population 
 comparison survival distribution, compared to each synthetic person having 
-precisely the median survival conditional on those values.
+precisely the mean life expectancy conditional on those values.
 
 The simulation process is invoked by specifying the parameter 
 `method = 'sample'`, rather than the default value `method = 'median'`, which 
 simply returns the tabulated median value from the cohort life tables. Using the
 `'sample'` method runs a simulation for a person of the given year of birth, 
 sex, and conditional age (e.g. the age they reached at the census date). The
-simulation proceeds by iterating up from that conditional age age, one year at a
+simulation proceeds by iterating up from that conditional age, one year at a
 time. At each year of age, a random number is generated (uniformly distributed 
 between 0.0 and 1.0). If that number is less than the life table probability of 
 such a person surviving to the next year, the age is incremented and the 
@@ -155,7 +155,7 @@ probability, then the current age is assigned as the synthetic person’s age of
 death.
 
 For fuller details on other function parameters, look up the help via 
-`?expected_year_of_death`. These include control over what estimate is returned 
+`?expected_year_of_death`. These include control over what estimate is returned  
 (i.e. the median or the 5th or 95th percentile), the number of simulated samples
 returned per individual, and a seed to allow for reproducibility of the randomly
 simulated values.

@@ -144,7 +144,7 @@ person, randomly simulated from the population, conditional on the
 target person’s year of birth, sex, and age at a censoring date. The
 simulation approach gives a much more natural-looking population
 comparison survival distribution, compared to each synthetic person
-having precisely the median survival conditional on those values.
+having precisely the mean survival conditional on those values.
 
 The simulation process is invoked by specifying the parameter
 `method = 'sample'`, rather than the default value `method = 'median'`,
